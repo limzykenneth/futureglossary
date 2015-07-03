@@ -47,6 +47,10 @@
         <script>window.jQuery || document.write('<script src="./scripts/vendor/jquery.min.js"><\/script>')</script>
         <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
 
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.17.0/plugins/CSSPlugin.min.js"></script>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.17.0/easing/EasePack.min.js"></script>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.17.0/TweenLite.min.js"></script>
+
         <script type="text/javascript" src="./scripts/vendor/underscore-min.js"></script>
         <script type="text/javascript" src="./scripts/vendor/backbone-min.js"></script>
     </head>
@@ -67,6 +71,7 @@
             <a href="#<%= link %>">
                 <div class="square">
                     <h3><%= name %></h3>
+                    <div class="explanation"><%= explain %></div>
                 </div>
             </a>
         </script>
@@ -79,7 +84,7 @@
             </ul>
             <div id="intro<%= link %>"><%= intro %></div>
             <div id="application<%= link %>"><%= application %></div>
-            <div id="workshops<%= link %>"><%= workshops %></div>
+            <div id="workshops<%= link %>"><a href="<%= workshops.path %>" target=_blank><%= workshops.name %></a></div>
         </script>
 
         <script type="text/javascript" src="./scripts/model.js"></script>

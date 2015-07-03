@@ -1,6 +1,6 @@
 $(document).ready(function($) {
 	var glossaryGroup = new futures.collection([
-			iHTML, iOpenData, iJavascript, iRuby
+			iHTML, iCSS, iOpenData, iJavascript, iRuby, iGit, iSwift, iIot
 		]);
 
 	var glossaryGroupView = new futures.allView({collection: glossaryGroup});
@@ -10,6 +10,21 @@ $(document).ready(function($) {
 	var glossaryRouter = new futures.routes();
 
 	Backbone.history.start();
+
+	$(".button .square").hover(function(event) {
+		/* Stuff to do when the mouse enters the element */
+		$(this).children('.explanation').css('display', 'block');
+		// alert(this.id);
+	}, function() {
+		/* Stuff to do when the mouse leaves the element */
+		$(".button .square .explanation").css('display', 'none');
+	});
+
+	$(window).bind('click', function(e) {
+		if(jQuery('#popup').dialog('isOpen') && !jQuery(e.target).is('.ui-dialog, a') && !jQuery(e.target).closest('.ui-dialog').length){
+			$("#popup").dialog('close');
+		}
+	});
 });
 
 function showPopup(selectedModel){
@@ -18,17 +33,15 @@ function showPopup(selectedModel){
 		appendTo: "#wrapper",
 		height: 500,
 		width: 800,
-		hide: { effect: "slideUp", duration: 500 },
-		show: { effect: "slideDown", duration: 500 },
+		hide: { effect: "slideUp", duration: 200 },
+		show: { effect: "scale", duration: 200 },
 		resizable: false,
 		dialogClass: 'noTitleStuff',
 
 		buttons: [
 		    {
-				text: "Close",
-				icons: {
-					primary: "ui-icon-close"
-				},
+				text: "X",
+				
 				click: function() {
 					location.hash="";
 					showPopup("none");
@@ -36,7 +49,7 @@ function showPopup(selectedModel){
 
 				// Uncommenting the following line would hide the text,
 				// resulting in the label being used as a tooltip
-				showText: false
+				// showText: false
 		    }
 		]
 	});
