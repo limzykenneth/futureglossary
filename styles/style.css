@@ -1,0 +1,130 @@
+/* default settings (layout only, NOT for typographic details) */
+
+a:link{
+	text-decoration:none;
+	color:#000;
+}
+
+a:visited{
+	text-decoration:none;
+	color:#000;
+}
+
+body{
+	background-color:#fff;
+	font-family: "Graphik";
+	font-weight: light;
+}
+
+
+/* default typography presets */
+
+
+h1{
+	font-family: "Inconsolata", "Helvetica", sans-serif;
+	font-size: 4em;
+}
+h2{
+	/*font-family:"Georgia", serif;*/
+	font-size:3em;
+}
+h3{
+	font-size:2em;
+}
+h4{
+	font-size:1.5em;
+}
+h5{
+	font-size:1em;
+}
+h6{
+	font-size:0.5em;
+}
+p{
+
+}
+
+div{
+
+}
+
+
+
+/* custom modifications */
+#page-content{
+	width:100%;
+}
+
+#wrapper{
+	width:60em;
+	height: 99vh;
+	max-width:900px;
+	margin: 0 auto;
+	background-color: blue;
+}
+
+#wrapper section{
+	position:relative;
+	height: 100%;
+	width: 100%;
+	top:20%;
+}
+
+.button{
+	display:inline-block;
+	position:relative;
+	width: 12.3em;
+	height: 12.3em;
+	margin: 5px;
+	padding: 0.5em;
+	background-color: red;
+	text-align: center;
+}
+
+.button .square{
+	position:relative;
+	padding:0px;
+	margin:0px;
+	height:100%;
+	width: 100%;
+}
+
+
+/* jQuery UI */
+#popup, .ui-dialog{
+	padding:0px;
+	border:0px;
+	margin:0px;
+}
+
+#tabs{
+	padding:0px;
+	border:0px;
+	margin:0px;
+	height:100%;
+}
+
+#tabs .ui-tabs-nav{
+	padding:0px;
+	border:0px;
+}
+
+#tabs .ui-tabs-nav li{
+	padding:0px;
+	border:0px;
+	margin:0px;
+}
+
+.no-close .ui-dialog-titlebar-close {
+  	display: none;
+}
+
+.noTitleStuff .ui-dialog-titlebar {
+	display:none;
+}
+
+
+/* responsive design */
+
+@media
+

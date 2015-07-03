@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head profile="http://www.w3.org/2005/10/profile">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>The site's title</title>
+        
+        <!-- for Google -->
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+
+        <meta name="author" content="" />
+        <meta name="copyright" content="" />
+        <meta name="application-name" content="" />
+
+        <!-- for Facebook -->          
+        <meta property="og:title" content="" />
+        <meta property="og:type" content="article" />
+        <meta property="og:image" content="" />
+        <meta property="og:url" content="" />
+        <meta property="og:description" content="" />
+
+        <!-- for Twitter -->          
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content="" />
+        <meta name="twitter:description" content="" />
+        <meta name="twitter:image" content="" />
+
+        <link rel="author" href="http://designerken.be"/>
+        
+        <!--iOS -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+        <link rel="icon" type="image/png" href="">
+        <link rel="apple-touch-icon" type="image/png" href="">
+
+        <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+        <link rel="stylesheet" href="styles/normalize.css">
+        <link rel="stylesheet" href="styles/style.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="./scripts/vendor/jquery.min.js"><\/script>')</script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+
+        <script type="text/javascript" src="./scripts/vendor/underscore-min.js"></script>
+        <script type="text/javascript" src="./scripts/vendor/backbone-min.js"></script>
+    </head>
+    <body>
+
+        <!--[if lt IE 9]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+			
+		<div id="page-content">
+            <div id="wrapper">
+            </div>
+
+            <div id="popup"></div>
+		</div>
+
+        <script id="allView" type="text/template">
+            <a href="#<%= link %>">
+                <div class="square">
+                    <h3><%= name %></h3>
+                </div>
+            </a>
+        </script>
+
+        <script id="tabsView" type="text/template">
+            <ul>
+                <li><a href="#intro<%= link %>">Intro</a></li>
+                <li><a href="#application<%= link %>">Application</a></li>
+                <li><a href="#workshops<%= link %>">Workshops</a></li>
+            </ul>
+            <div id="intro<%= link %>"><%= intro %></div>
+            <div id="application<%= link %>"><%= intro %></div>
+            <div id="workshops<%= link %>"><%= intro %></div>
+        </script>
+
+        <script type="text/javascript" src="./scripts/model.js"></script>
+        <script type="text/javascript" src="./scripts/collection.js"></script>
+        <script type="text/javascript" src="./scripts/view.js"></script>
+        <script type="text/javascript" src="./scripts/route.js"></script>
+        <script type="text/javascript" src="./scripts/custom.js"></script>
+    </body>
+</html>
