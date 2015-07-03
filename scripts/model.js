@@ -22,7 +22,7 @@ var iHTML = new futures.glossary({
 var iOpenData = new futures.glossary({
 	name: "Open Data",
 	link: "odata",
-	intro: "",
+	intro: "This is intro to Open Data",
 	application: "",
 	workshops: [{
 		"Wikipedia": "https://en.wikipedia.org/wiki/Open_data"

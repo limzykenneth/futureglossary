@@ -11,18 +11,18 @@ futures.routes = Backbone.Router.extend({
 	},
 
 	noSelection: function(){
-		$("#popup").html("");
+		showPopup("none");
 	},
 	introHTML: function(){
-		selectedModel = "iHTML";
+		showPopup(iHTML);
 	},
 	introOpenData: function(){
-		selectedModel = "iOpenData";
+		showPopup(iOpenData);
 	},
 	introJavascript: function(){
-		selectedModel = "iJavascript";
+		showPopup(iJavascript);
 	},
 	introRuby: function(){
-		selectedModel = "iRuby";
+		showPopup(iRuby);
 	}
 });

@@ -5,18 +5,14 @@ $(document).ready(function($) {
 
 	var glossaryGroupView = new futures.allView({collection: glossaryGroup});
 
-	var glossaryDetailsView = new futures.detailsView({model: iHTML})
-
-
 	$("#wrapper").html(glossaryGroupView.render().$el);
-	$("#popup").html(glossaryDetailsView.render().$el);
 
 	var glossaryRouter = new futures.routes();
 
 	Backbone.history.start();
+});
 
-	
-
+function showPopup(selectedModel){
 	$("#popup").dialog({
 		autoOpen: false,
 		appendTo: "#wrapper",
@@ -25,12 +21,35 @@ $(document).ready(function($) {
 		hide: { effect: "slideUp", duration: 500 },
 		show: { effect: "slideDown", duration: 500 },
 		resizable: false,
-		dialogClass: 'noTitleStuff'
+		dialogClass: 'noTitleStuff',
+
+		buttons: [
+		    {
+				text: "Close",
+				icons: {
+					primary: "ui-icon-close"
+				},
+				click: function() {
+					location.hash="";
+					showPopup("none");
+				},
+
+				// Uncommenting the following line would hide the text,
+				// resulting in the label being used as a tooltip
+				showText: false
+		    }
+		]
 	});
 
+	if (selectedModel == "none"){
+		$("#popup").dialog("close");
+		return true;
+	}
+
+	var glossaryDetailsView = new futures.detailsView({model: selectedModel});
+
+	$("#popup").dialog("open").html(glossaryDetailsView.render().$el);
 	$("#tabs").tabs({
 		collapsible: false
 	});
-
-	
-});
+}
