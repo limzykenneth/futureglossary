@@ -14,6 +14,7 @@ futures.singleView = Backbone.View.extend({
 
 futures.allView = Backbone.View.extend({
 	tagName: "section",
+	id: "wall",
 
 	render: function(){
 		this.collection.each(this.addGlossary, this);
