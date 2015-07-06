@@ -34,7 +34,7 @@ function showPopup(selectedModel){
 		height: 500,
 		width: 800,
 		hide: { effect: "slideUp", duration: 200 },
-		show: { effect: "scale", duration: 200 },
+		show: { effect: "slideDown", duration: 200 },
 		resizable: false,
 		dialogClass: 'noTitleStuff',
 
