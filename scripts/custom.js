@@ -8,30 +8,46 @@ $(document).ready(function($) {
 	$("#wrapper").html(glossaryGroupView.render().$el);
 
 	var glossaryRouter = new futures.routes();
-
 	Backbone.history.start();
 
-	$(".button .square").hover(function(event) {
+	$(".button").hover(function(event) {
 		/* Stuff to do when the mouse enters the element */
-		$(this).children('.explanation').css('display', 'block');
-		// alert(this.id);
-	}, function() {
+		var id = $(this).index() + 1;
+		var cid = "c"+id;
+		var expanded = glossaryGroup.get(cid).toJSON().expanded;
+
+		if (expanded == "false"){
+			$(this).find('.explanation').css('display', 'block');
+		}
+	}, function(event) {
 		/* Stuff to do when the mouse leaves the element */
-		$(".button .square .explanation").css('display', 'none');
+		var id = $(this).index() + 1;
+		var cid = "c"+id;
+		var expanded = glossaryGroup.get(cid).toJSON().expanded;
+
+		if (expanded == "false"){
+			$(this).find('.explanation').css('display', 'none');
+		}
 	});
 
-	// $(window).bind('click', function(e) {
-	// 	if(jQuery('#popup').dialog('isOpen') && !jQuery(e.target).is('.ui-dialog, a') && !jQuery(e.target).closest('.ui-dialog').length){
-	// 		$("#popup").dialog('close');
-	// 	}
-	// });
+	// Expand and contract on click
+	$(".button").on("click", function(e) {
+		var id = $(this).index() + 1;
+		var cid = "c"+id;
 
-	$(".button").click(function(e) {
+		$(this).find('.explanation').html(glossaryGroup.get(cid).toJSON().intro);
+		$(this).find('.explanation').css('display', 'block');
+		glossaryGroup.get(cid).set("expanded","true");
+
 		var w = 430;
 		var h = 430;
+
 		if ($(this).width() == 430){
 			w = 200;
 			h = 200;
+			$(this).find('.explanation').html(glossaryGroup.get(cid).toJSON().explain);
+			$(this).find('.explanation').css('display', 'none');
+			glossaryGroup.get(cid).set("expanded","false");
 		}
 		$(this).animate({width: w, height: h}, 100, function(){
 			$("#wall").masonry({});
@@ -53,41 +69,31 @@ $(document).ready(function($) {
 
 // Custom functions
 function showPopup(selectedModel){
-	// $("#popup").dialog({
-	// 	autoOpen: false,
-	// 	appendTo: "#wrapper",
-	// 	height: 500,
-	// 	width: 800,
-	// 	hide: { effect: "slideUp", duration: 200 },
-	// 	show: { effect: "slideDown", duration: 200 },
-	// 	resizable: false,
-	// 	dialogClass: 'noTitleStuff',
+	// if(selectedModel != "none"){
+	// 	var glossaryGroup = new futures.collection([
+	// 			iHTML, iCSS, iOpenData, iJavascript, iRuby, iGit, iSwift, iIot
+	// 		]);
 
-	// 	buttons: [
-	// 	    {
-	// 			text: "X",
-				
-	// 			click: function() {
-	// 				location.hash="";
-	// 				showPopup("none");
-	// 			},
+	// 	index = glossaryGroup.indexOf(selectedModel);
+	// 	var id = index + 1;
+	// 	var cid = "c"+id;
 
-	// 			// Uncommenting the following line would hide the text,
-	// 			// resulting in the label being used as a tooltip
-	// 			// showText: false
-	// 	    }
-	// 	]
-	// });
+	// 	$(".button:eq("+index+")").find('.explanation').html(glossaryGroup.get(cid).toJSON().intro);
+	// 	$(".button:eq("+index+")").find('.explanation').css('display', 'block');
+	// 	glossaryGroup.get(cid).set("expanded","true");
 
-	// if (selectedModel == "none"){
-	// 	$("#popup").dialog("close");
-	// 	return true;
+	// 	var w = 430;
+	// 	var h = 430;
+
+	// 	if ($(".button:eq("+index+")").width() == 430){
+	// 		w = 200;
+	// 		h = 200;
+	// 		$(".button:eq("+index+")").find('.explanation').html(glossaryGroup.get(cid).toJSON().explain);
+	// 		$(".button:eq("+index+")").find('.explanation').css('display', 'none');
+	// 		glossaryGroup.get(cid).set("expanded","false");
+	// 	}
+	// 	$(".button:eq("+index+")").animate({width: w, height: h}, 100, function(){
+	// 		$("#wall").masonry({});
+	// 	});
 	// }
-
-	// var glossaryDetailsView = new futures.detailsView({model: selectedModel});
-
-	// $("#popup").dialog("open").html(glossaryDetailsView.render().$el);
-	// $("#tabs").tabs({
-	// 	collapsible: false
-	// });
 }

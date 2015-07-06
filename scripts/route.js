@@ -1,5 +1,4 @@
 var futures = futures || {};
-var selectedModel;
 
 futures.routes = Backbone.Router.extend({
 	routes: {

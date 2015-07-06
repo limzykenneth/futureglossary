@@ -5,7 +5,8 @@ futures.glossary = Backbone.Model.extend({
 		"name": "",
 		"intro": "",
 		"application": "",
-		"workshops": []
+		"workshops": [],
+		"expanded": "false"
 	},
 });
 
