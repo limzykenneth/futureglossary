@@ -15,6 +15,7 @@ body{
 	font-family: "Graphik";
 	font-weight: light;
 	background-image: url("../images/background.jpg");
+	color: #271d66;
 }
 
 
@@ -55,6 +56,33 @@ div{
 /* custom modifications */
 #page-content{
 	width:100%;
+}
+
+header{
+	position:relative;
+	width:100%;
+	height:50px;
+	background-color: #dedaff;
+}
+
+header #title{
+	margin:0px;
+	padding:10px;
+}
+
+.filter{
+	margin-top:5px;
+	margin-left: 10px;
+}
+.filter #title{
+	display: inline-block;
+	padding:0px;
+}
+.filter .label{
+	margin-left:5px;
+	cursor: pointer;
+	display: inline-block;
+	background-color: #cbffec;
 }
 
 #wrapper{
@@ -100,7 +128,7 @@ div{
 	display: none;
 	width:80%;
 	margin:0 auto;
-	text-align: left;
+	text-align: center;
 }
 
 
