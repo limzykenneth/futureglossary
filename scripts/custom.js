@@ -5,64 +5,17 @@ $(document).ready(function($) {
 
 	var glossaryGroupView = new futures.allView({collection: glossaryGroup});
 
-	$("#wrapper").html(glossaryGroupView.render().$el);
+	$("#sidebar").html(glossaryGroupView.render().$el);
+
+	var glossaryDetail = new futures.detailsView({});
+	// $("#wrapper").html(glossaryDetail.render().$el);
 
 	var glossaryRouter = new futures.routes();
 
 	Backbone.history.start();
 
-	$(".button .square").hover(function(event) {
-		/* Stuff to do when the mouse enters the element */
-		$(this).children('.explanation').css('display', 'block');
-		// alert(this.id);
-	}, function() {
-		/* Stuff to do when the mouse leaves the element */
-		$(".button .square .explanation").css('display', 'none');
-	});
-
-	$(window).bind('click', function(e) {
-		if(jQuery('#popup').dialog('isOpen') && !jQuery(e.target).is('.ui-dialog, a') && !jQuery(e.target).closest('.ui-dialog').length){
-			$("#popup").dialog('close');
-		}
-	});
+	
 });
 
 function showPopup(selectedModel){
-	$("#popup").dialog({
-		autoOpen: false,
-		appendTo: "#wrapper",
-		height: 500,
-		width: 800,
-		hide: { effect: "slideUp", duration: 200 },
-		show: { effect: "slideDown", duration: 200 },
-		resizable: false,
-		dialogClass: 'noTitleStuff',
-
-		buttons: [
-		    {
-				text: "X",
-				
-				click: function() {
-					location.hash="";
-					showPopup("none");
-				},
-
-				// Uncommenting the following line would hide the text,
-				// resulting in the label being used as a tooltip
-				// showText: false
-		    }
-		]
-	});
-
-	if (selectedModel == "none"){
-		$("#popup").dialog("close");
-		return true;
-	}
-
-	var glossaryDetailsView = new futures.detailsView({model: selectedModel});
-
-	$("#popup").dialog("open").html(glossaryDetailsView.render().$el);
-	$("#tabs").tabs({
-		collapsible: false
-	});
 }

@@ -27,13 +27,13 @@ futures.allView = Backbone.View.extend({
 });
 
 futures.detailsView = Backbone.View.extend({
-	id: "tabs",
+	tagName: "article",
 
-	template: _.template($("#tabsView").html()),
+	template: _.template($("#detailsView").html()),
 
 	render: function(){
-		var glossaryTab = this.template(this.model.toJSON());
-		this.$el.html(glossaryTab);
+		var glossaryDetails = this.template(this.model.toJSON());
+		this.$el.html(glossaryDetails);
 		return this;
 	}
 });

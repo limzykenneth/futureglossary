@@ -15,6 +15,7 @@ body{
 	font-family: "Graphik";
 	font-weight: light;
 	background-image: url("../images/background.jpg");
+	overflow-x:hidden;
 }
 
 
@@ -31,13 +32,13 @@ h2{
 }
 h3{
 	font-size:2em;
-	margin-bottom:10px;
 }
 h4{
 	font-size:1.5em;
 }
 h5{
 	font-size:1em;
+	font-weight: normal;
 }
 h6{
 	font-size:0.5em;
@@ -54,125 +55,65 @@ div{
 
 /* custom modifications */
 #page-content{
-	width:100%;
+	width:100vw;
+}
+
+#sidebar{
+	position:fixed;
+	float:left;
+	left:0px;
+	width:20%;
+	height:100vh;
+	background-color: white;
 }
 
 #wrapper{
-	width:60em;
+	float:right;
+	width:70%;
 	max-width:900px;
-	margin: 0 auto;
+	/*margin: 0 auto;*/
 	/*background-color: blue;*/
 	margin-top: 30px;
 }
 
-#wrapper section{
+#wrapper article{
 	position:relative;
 	height: 100%;
-	width: 100%;
+	width: 70%;
+	max-width: 600px;
 	top:0%;
+	font-size: 1.3em;
+	line-height: 1.3em;
 }
 
 .button{
-	display:inline-block;
+	display:block;
 	float:left;
 	position:relative;
-	width: 12.3em;
-	height: 12.3em;
-	margin: 5px;
-	padding: 0.5em;
-	background-color: #cbffec;
-	text-align: center;
+	width: 99%;
+	/*background-color: #cbffec;*/
+	border-style: dashed;
+	border-color: #888;
+	border-width:2px;
+	border-top-width: 0px;
+	text-align: left;
 }
 
-.button .square{
+.button .label{
 	position:relative;
 	padding:0px;
 	margin:0px;
-	height:100%;
 	width: 100%;
-	top:-1.2em;
 	color:#271d66;
 }
 
-.button .square .explanation{
-	display: none;
-	width:80%;
-	margin:0 auto;
-	text-align: left
-}
-
-
-/* jQuery UI */
-*:focus {
-    outline: none;
-    -moz-box-shadow: none;
-    -webkit-box-shadow: none;
-    box-shadow: none;
-}
-
-#popup, .ui-dialog{
-	padding:0px;
-	border:0px;
+.button .label .labelText{
 	margin:0px;
+	padding-top:10px;
+	padding-bottom:10px;
+	padding-left:15px;
 }
 
-#tabs{
-	padding:0px;
-	border:0px;
-	margin:0px;
-	height:100%;
-	font-family: "Graphik";
-}
-
-#tabs .ui-state-default{
-	background-image:none;
-}
-
-#tabs .ui-tabs-nav{
-	padding:0px;
-	border:0px;
-}
-
-#tabs .ui-tabs-nav li{
-	padding:0px;
-	border:1px;
-	border-style: solid;
-	border-color: #ddd;
-	margin:0px;
-	font-weight: bold;
-	width:33.05%;
-	overflow:hidden;
-}
-
-#tabs .ui-state-default a{
-	opacity:0.5;
-	color:#271d66;
-	width:100%;
-	height:100%;
-}
-
-#tabs .ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited{
-	opacity:1;
-	color:#271d66;
-}
-
-.ui-dialog .ui-dialog-buttonpane .ui-state-default { 
-	border: 0 none;
-	background: none;
-	font-size: 1.5em;
-}
-
-.ui-dialog .ui-dialog-buttonpane{
-	border-width:0;
-}
-
-.no-close .ui-dialog-titlebar-close {
-  	display: none;
-}
-
-.noTitleStuff .ui-dialog-titlebar {
-	display:none;
-}
 
 
 /* responsive design */
