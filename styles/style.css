@@ -62,20 +62,21 @@ div{
 header{
 	position:fixed;
 	width:100%;
-	height:50px;
-	background-color: #dedaff;
+	height:70px;
+	background-color: white;
 	z-index:100;
 }
 
 header #title{
 	margin:0px;
+	margin-top:5px;
 	padding:10px;
 }
 
 #headSpacer{
 	position:relative;
 	width:100%;
-	height:50px;
+	height:70px;
 	z-index:100;
 }
 
@@ -138,7 +139,7 @@ header #title{
 .button .label .labelText{
 	margin:0px;
 	height:90%;
-	padding-top:10px;
+	padding-top:20px;
 	padding-bottom:10px;
 	padding-left:15px;
 }
