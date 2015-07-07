@@ -10,6 +10,18 @@ $(document).ready(function($) {
 	var glossaryRouter = new futures.routes();
 	Backbone.history.start();
 
+	for (i=0; i < glossaryGroup.length; i++){
+		if(glossaryGroup.at(i).toJSON().tier == 1){
+			$(".button:eq("+i+")").css('background-color', '#cbffec');
+		}
+		if(glossaryGroup.at(i).toJSON().tier == 2){
+			$(".button:eq("+i+")").css('background-color', '#bef0ff');
+		}
+		if(glossaryGroup.at(i).toJSON().tier == 3){
+			$(".button:eq("+i+")").css('background-color', '#dedaff');
+		}
+	}
+
 	$(".button").hover(function(event) {
 		/* Stuff to do when the mouse enters the element */
 		var id = $(this).index() + 1;
@@ -64,22 +76,37 @@ $(document).ready(function($) {
 		showHideTiers(3);
 	});
 	$("#all").click(function(e) {
-		$(".button").each(function(){
-			animateToShow($(this));
+		$(".button").each(function(i){
+			var id = i+1;
+			var cid = "c"+id;
+			animateToShow($(this), cid);
 		});
 	});
 
 	function showHideTiers(index){
 		for (i=0; i < glossaryGroup.length; i++){
+			var id = i+1;
+			var cid = "c"+id;
 			if (glossaryGroup.at(i).toJSON().tier == index){
-				animateToShow($(".button:eq("+i+")"));
+				animateToShow($(".button:eq("+i+")"), cid);
 			}else{
-				animateToHide($(".button:eq("+i+")"));
+				animateToHide($(".button:eq("+i+")"), cid);
 			}
 		}
 	}
+	
+	function animateToShow($item, cid){
+		var w = 200;
+		var h = 200;
+		if ($item.width() == 430){
+			w = 200;
+			h = 200;
+			$item.find('.explanation').html(glossaryGroup.get(cid).toJSON().explain);
+			$item.find('.explanation').css('display', 'none').css('text-align','center');
+			glossaryGroup.get(cid).set("expanded","false");
+		}
+		$item.animate({width: w, height: h}, 100);
 
-	function animateToShow($item){
 		$item.animate({
 			width: '200px',
 			height: '200px',
@@ -92,7 +119,18 @@ $(document).ready(function($) {
 		});
 	}
 
-	function animateToHide($item){
+	function animateToHide($item, cid){
+		var w = 200;
+		var h = 200;
+		if ($item.width() == 430){
+			w = 200;
+			h = 200;
+			$item.find('.explanation').html(glossaryGroup.get(cid).toJSON().explain);
+			$item.find('.explanation').css('display', 'none').css('text-align','center');
+			glossaryGroup.get(cid).set("expanded","false");
+		}
+		$item.animate({width: w, height: h}, 100);
+
 		$item.animate({
 			width: '0',
 			height: '0',
