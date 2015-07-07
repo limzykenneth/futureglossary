@@ -22,7 +22,6 @@ function showPopup(selectedModel){
 		var glossaryDetailsView = new futures.detailsView({model: selectedModel});
 
 		$("#wrapper").html(glossaryDetailsView.render().$el);
-		console.log(selectedModel.toJSON().workshops.length);
 	}
 }
 

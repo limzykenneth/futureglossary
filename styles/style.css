@@ -16,6 +16,7 @@ body{
 	font-weight: light;
 	background-image: url("../images/background.jpg");
 	overflow-x:hidden;
+	color:#271d66;
 }
 
 
@@ -58,13 +59,37 @@ div{
 	width:100vw;
 }
 
+header{
+	position:fixed;
+	width:100%;
+	height:50px;
+	background-color: #dedaff;
+	z-index:100;
+}
+
+header #title{
+	margin:0px;
+	padding:10px;
+}
+
+#headSpacer{
+	position:relative;
+	width:100%;
+	height:50px;
+	z-index:100;
+}
+
 #sidebar{
 	position:fixed;
 	float:left;
 	left:0px;
 	width:20%;
 	height:100vh;
-	background-color: #bef0ff;
+	background-color: #cbffec;
+	overflow-y: scroll;
+}
+#sidebar::-webkit-scrollbar { 
+    display: none; 
 }
 
 #wrapper{
@@ -106,12 +131,13 @@ div{
 	padding:0px;
 	margin:0px;
 	width: 100%;
-	height:70px;
+	height:4em;
 	color:#271d66;
 }
 
 .button .label .labelText{
 	margin:0px;
+	height:90%;
 	padding-top:10px;
 	padding-bottom:10px;
 	padding-left:15px;
