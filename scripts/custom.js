@@ -18,4 +18,20 @@ $(document).ready(function($) {
 });
 
 function showPopup(selectedModel){
+	if(selectedModel != "none"){
+		var glossaryDetailsView = new futures.detailsView({model: selectedModel});
+
+		$("#wrapper").html(glossaryDetailsView.render().$el);
+		console.log(selectedModel.toJSON().workshops.length);
+	}
+}
+
+function countProperties(obj) {
+	var prop;
+	var propCount = 0;
+
+	for (prop in obj) {
+		propCount++;
+	}
+	return propCount;
 }

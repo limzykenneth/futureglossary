@@ -77,7 +77,26 @@
         </script>
 
         <script id="detailsView" type="text/template">
-            <%= intro %>
+            <div><%= intro %></div>
+            <h4>Application</h4>
+            <ul>
+                <% 
+                    var count = application.length;
+                    for (i=0; i < count; i++){
+                        print("<li><a href='" + application[i].path + "' target=_blank>" + application[i].name + "</a></li>");
+                    }
+                %>
+            </ul>
+            <h4>Workshops</h4>
+            <ul>
+                <% 
+                    var count = workshops.length;
+                    for (i=0; i < count; i++){
+                        print("<li><a href='" + workshops[i].path + "' target=_blank>" + workshops[i].name + "</a></li>");
+                    }
+                %>
+            </ul>
+
         </script>
 
         <script type="text/javascript" src="./scripts/model.js"></script>
