@@ -1,5 +1,5 @@
 var glossaryGroup = new futures.collection([
-			iHTML, iOpenData, iJavascript, iRuby, iGit, iSwift, iIot
+			iHTML, iOpenData, iJavascript, iRuby, iGit, iSwift, iIot, iFeedback
 		]);
 
 var glossaryGroupView = new futures.allView({collection: glossaryGroup});

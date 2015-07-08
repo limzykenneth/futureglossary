@@ -144,3 +144,19 @@ var iIot = new futures.glossary({
 	}]
 });
 
+var iFeedback = new futures.glossary({
+	name: "Feedback",
+	link: "feedback",
+	tier: 1,
+	explain: "Tell us what you think about this glossary!",
+	intro: "",
+	application: [{
+		name: "",
+		path: ""
+	}],
+	workshops: [{
+		name: "",
+		path: ""
+	}]
+});
+

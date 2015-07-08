@@ -90,21 +90,73 @@
 
         <script id="sliderView" type="text/template">
             <div class="slider">
+                <%
+                function snippets(link){
+                    var youtubeSnip;
+                    var vimeoSnip;
+                    var imageSnip;
+
+                    youtubeSnip = '<iframe width="350" height="145" src="https://www.youtube.com/embed/'+ link.substr(link.indexOf("/watch?v=")+9) + '" frameborder="0" allowfullscreen></iframe>';
+
+                    vimeoSnip = '<iframe src="https://player.vimeo.com/video/' + link.substr(link.indexOf(".com/")+5) + '" width="350" height="197" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>';
+                    imageSnip = '<img src="' + link + '" width=350>';
+
+                    if(link.indexOf("youtube")+1){
+                        return ["youtube", youtubeSnip];
+                    }else if(link.indexOf("vimeo")+1){
+                        return ["vimeo", vimeoSnip];
+                    }else if(link.substr(link.length-3)=="jpg" || link.substr(link.length-3)=="png" || link.substr(link.length-3)=="gif"){
+                        return imageSnip;
+                    }else{
+                        return false;
+                    }
+
+                    // switch (ret){
+                    //     case youtube:
+                    //         return youtubeSnip;
+                    //         break;
+                    //     case vimeo:
+                    //         return vimeoSnip;
+                    //         break;
+                    //     case image:
+                    //         return imageSnip;
+                    //         break;
+                    //     default:
+                    //         return "";
+                    // }
+                }
+                %>
                 <div><%= intro %></div>
-                <div><ul>
+
+                <div>
                     <% 
                     var sum = application.length;
+                    var str = "";
+                    var panelCount = 1;
+                    var single = true;
+
                     for(i=0; i<sum; i++){
-                        var str = "";
-                        str += "<li><a href='";
-                        str += application[i].path;
-                        str += "' target=_blank>"
-                        str += application[i].name;
-                        str += "</a></li>";
-                        print(str);
+                        var content = snippets(application[i].path);
+
+                        if (content == false){
+                            str += "<ul><li><a href='";
+                            str += application[i].path;
+                            str += "' target=_blank>"
+                            str += application[i].name;
+                            str += "</a></li></ul>";
+                            while(single){
+                                panelCount++;
+                                single = false;
+                            }
+                            // print(str);
+                        }else{
+                            str = content[1] + "</div><div>";
+                            panelCount++;
+                        }
                     }
+                    print(str + "</div>");
                     %>
-                </ul></div>
+
                 <div><ul>
                     <% 
                     var sum = workshops.length;
@@ -123,8 +175,7 @@
             <div class="bulletNav">
                 <span class="bullet" id="1">&#9679;</span> 
                 <% 
-                var sum = 2;
-                for (i=0; i<sum; i++){
+                for (i=0; i<panelCount; i++){
                     print('<span class="bullet" id="2">&#9675;</span> ');
                 }
                 %>
