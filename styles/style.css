@@ -113,6 +113,7 @@ header #title{
 	padding: 10px;
 	background-color: #cbffec;
 	text-align: center;
+	overflow: hidden;
 }
 
 .button .square{
@@ -132,10 +133,20 @@ header #title{
 	text-align: center;
 }
 
-.banner { position: relative; overflow: auto; }
-.banner li { list-style: none; }
-.banner ul li { float: left; }
+.slider{
+	position: relative;
+	width:10000px;
+	height:100%;
+	right:130%;
+}
 
+.slider > div{
+	z-index: 10;
+	position:relative;
+	float:left;
+	margin-right:100px;
+	width:350px;
+}
 
 /* responsive design */
 

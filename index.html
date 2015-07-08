@@ -55,8 +55,6 @@
 
         <script type="text/javascript" src="./scripts/vendor/jquery.masonry.min.js"></script>
 
-        <script src="//unslider.com/unslider.min.js"></script>
-
     </head>
     <body>
 
@@ -83,9 +81,18 @@
             <a href="#<%= link %>">
                 <div class="square">
                     <h3><%= name %></h3>
-                    <div class="explanation"><%= explain %></div>
+                    <div class="explanation">
+                        <%= explain %>
+                    </div>
                 </div>
             </a>
+        </script>
+
+        <script id="sliderView" type="text/template">
+            <div class="slider">
+                <div><%= intro %></div>
+                <div><%= application %></div>
+            </div>
         </script>
 
         <script type="text/javascript" src="./scripts/model.js"></script>

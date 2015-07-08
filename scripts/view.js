@@ -12,6 +12,18 @@ futures.singleView = Backbone.View.extend({
 	}
 });
 
+futures.sliderView = Backbone.View.extend({
+	id: "banner",
+
+	template: _.template( $("#sliderView").html() ),
+	
+	render: function(){
+		var sliderTemplate = this.template(this.model.toJSON());
+		this.$el.html(sliderTemplate);
+		return this;
+	}
+});
+
 futures.allView = Backbone.View.extend({
 	tagName: "section",
 	id: "wall",
