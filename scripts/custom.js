@@ -1,5 +1,5 @@
 var glossaryGroup = new futures.collection([
-			iHTML, iJavascript, iRuby, iFeedback
+			iCode, iHTML, iJavascript, iRuby, iProcessing, iUX, iArduino, iWearables, iFeedback
 		]);
 
 var glossaryGroupView = new futures.allView({collection: glossaryGroup});
@@ -123,6 +123,36 @@ $(document).ready(function($) {
 		animationOptions: {
 			duration: 200
 		}
+	});
+
+	$(".explanation").on("click", ".slider a, .slider iframe", function(){
+		$(".button").off('click');
+		console.log("vic");
+		setTimeout(function(){
+			$(".button").on('click', function(){
+				var id = $(this).index();
+
+				var glossaryDetailsView = new futures.sliderView({model:glossaryGroup.at(id)});
+
+				$(this).find('.explanation').html(glossaryDetailsView.render().$el);
+				$(this).find('.explanation').css('display', 'block').css('text-align','left');
+				glossaryGroup.at(id).set("expanded","true");
+
+				var w = 430;
+				var h = 430;
+
+				if ($(this).width() == 430){
+					w = 200;
+					h = 200;
+					$(this).find('.explanation').html(glossaryGroup.at(id).toJSON().explain);
+					$(this).find('.explanation').css('display', 'none').css('text-align','center');
+					glossaryGroup.at(id).set("expanded","false");
+				}
+				$(this).animate({width: w, height: h}, 100, function(){
+					$("#wall").masonry({});
+				});
+			});
+		},10);
 	});
 });
 

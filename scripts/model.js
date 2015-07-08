@@ -39,10 +39,7 @@ var iCSS = new futures.glossary({
 		name: "",
 		path: ""
 	}],
-	workshops: [{
-		path: "https://www.codeschool.com/paths/html-css",
-		name: "Code School"
-	}]
+	workshops: false
 });
 
 var iOpenData = new futures.glossary({
@@ -55,10 +52,7 @@ var iOpenData = new futures.glossary({
 		name: "",
 		path: ""
 	}],
-	workshops: [{
-		name: "Wikipedia",
-		path: "https://en.wikipedia.org/wiki/Open_data"
-	}]
+	workshops: false
 });
 
 var iJavascript = new futures.glossary({
@@ -68,8 +62,11 @@ var iJavascript = new futures.glossary({
 	explain: "An object-oriented computer programming language commonly used to create interactive effects within web browsers.",
 	intro: "<p>Javascript is one of the most popular programming language in the world. In order to make plain HTML CSS webpage more dynamic, almost all webpages on the internet have Javascript in some form. In simple terms, Javascript is the programming language of the web.</p>",
 	application: [{
-		name: "",
-		path: ""
+		name: "Every Last Drop",
+		path: "http://everylastdrop.co.uk/"
+	},{
+		name: "Multeor",
+		path: "http://multeor.com/game/"
 	}],
 	workshops: false
 });
@@ -181,6 +178,22 @@ var iWearables = new futures.glossary({
 	application: [{
 		name: "MUSHTARI",
 		path: "https://vimeo.com/131786000"
+	}],
+	workshops: false
+});
+
+var iVR = new futures.glossary({
+	name: "Virtual Reality",
+	link: "vr",
+	tier: 2,
+	explain: "Virtual reality is an immersive computer simulated experience aiming to emulate real senses.",
+	intro: "",
+	application: [{
+		name: "The Future Universe",
+		path: "https://www.prote.in/en/feed/2015/07/step-into-your-screen-with-the-future-universe"
+	},{
+		name: "Oculus Rift",
+		path: "https://www.oculus.com"
 	}],
 	workshops: false
 });
