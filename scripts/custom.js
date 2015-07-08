@@ -1,5 +1,5 @@
 var glossaryGroup = new futures.collection([
-			iHTML, iOpenData, iJavascript, iRuby, iGit, iSwift, iIot, iFeedback
+			iHTML, iJavascript, iRuby, iFeedback
 		]);
 
 var glossaryGroupView = new futures.allView({collection: glossaryGroup});
@@ -24,18 +24,16 @@ $(document).ready(function($) {
 
 	$(".button").hover(function(event) {
 		/* Stuff to do when the mouse enters the element */
-		var id = $(this).index() + 1;
-		var cid = "c"+id;
-		var expanded = glossaryGroup.get(cid).toJSON().expanded;
+		var id = $(this).index();
+		var expanded = glossaryGroup.at(id).toJSON().expanded;
 
 		if (expanded == "false"){
 			$(this).find('.explanation').css('display', 'block');
 		}
 	}, function(event) {
 		/* Stuff to do when the mouse leaves the element */
-		var id = $(this).index() + 1;
-		var cid = "c"+id;
-		var expanded = glossaryGroup.get(cid).toJSON().expanded;
+		var id = $(this).index();
+		var expanded = glossaryGroup.at(id).toJSON().expanded;
 
 		if (expanded == "false"){
 			$(this).find('.explanation').css('display', 'none');
@@ -44,14 +42,13 @@ $(document).ready(function($) {
 
 	// Expand and contract on click
 	$(".button").on("click", function(e) {
-		var id = $(this).index() + 1;
-		var cid = "c"+id;
+		var id = $(this).index();
 
-		var glossaryDetailsView = new futures.sliderView({model:glossaryGroup.get(cid)});
+		var glossaryDetailsView = new futures.sliderView({model:glossaryGroup.at(id)});
 
 		$(this).find('.explanation').html(glossaryDetailsView.render().$el);
 		$(this).find('.explanation').css('display', 'block').css('text-align','left');
-		glossaryGroup.get(cid).set("expanded","true");
+		glossaryGroup.at(id).set("expanded","true");
 
 		var w = 430;
 		var h = 430;
@@ -59,9 +56,9 @@ $(document).ready(function($) {
 		if ($(this).width() == 430){
 			w = 200;
 			h = 200;
-			$(this).find('.explanation').html(glossaryGroup.get(cid).toJSON().explain);
+			$(this).find('.explanation').html(glossaryGroup.at(id).toJSON().explain);
 			$(this).find('.explanation').css('display', 'none').css('text-align','center');
-			glossaryGroup.get(cid).set("expanded","false");
+			glossaryGroup.at(id).set("expanded","false");
 		}
 		$(this).animate({width: w, height: h}, 100, function(){
 			$("#wall").masonry({});
@@ -78,14 +75,13 @@ $(document).ready(function($) {
 
 		setTimeout(function(){
 			$(".button").on('click', function(){
-				var id = $(this).index() + 1;
-				var cid = "c"+id;
+				var id = $(this).index();
 
-				var glossaryDetailsView = new futures.sliderView({model:glossaryGroup.get(cid)});
+				var glossaryDetailsView = new futures.sliderView({model:glossaryGroup.at(id)});
 
 				$(this).find('.explanation').html(glossaryDetailsView.render().$el);
 				$(this).find('.explanation').css('display', 'block').css('text-align','left');
-				glossaryGroup.get(cid).set("expanded","true");
+				glossaryGroup.at(id).set("expanded","true");
 
 				var w = 430;
 				var h = 430;
@@ -93,9 +89,9 @@ $(document).ready(function($) {
 				if ($(this).width() == 430){
 					w = 200;
 					h = 200;
-					$(this).find('.explanation').html(glossaryGroup.get(cid).toJSON().explain);
+					$(this).find('.explanation').html(glossaryGroup.at(id).toJSON().explain);
 					$(this).find('.explanation').css('display', 'none').css('text-align','center');
-					glossaryGroup.get(cid).set("expanded","false");
+					glossaryGroup.at(id).set("expanded","false");
 				}
 				$(this).animate({width: w, height: h}, 100, function(){
 					$("#wall").masonry({});
@@ -115,9 +111,7 @@ $(document).ready(function($) {
 	});
 	$("#all").click(function(e) {
 		$(".button").each(function(i){
-			var id = i+1;
-			var cid = "c"+id;
-			animateToShow($(this), cid);
+			animateToShow($(this), i);
 		});
 	});
 
@@ -172,25 +166,23 @@ function showPopup(selectedModel){
 
 function showHideTiers(index){
 	for (i=0; i < glossaryGroup.length; i++){
-		var id = i+1;
-		var cid = "c"+id;
 		if (glossaryGroup.at(i).toJSON().tier == index){
-			animateToShow($(".button:eq("+i+")"), cid);
+			animateToShow($(".button:eq("+i+")"), i);
 		}else{
-			animateToHide($(".button:eq("+i+")"), cid);
+			animateToHide($(".button:eq("+i+")"), i);
 		}
 	}
 }
 
-function animateToShow($item, cid){
+function animateToShow($item, id){
 	var w = 200;
 	var h = 200;
 	if ($item.width() == 430){
 		w = 200;
 		h = 200;
-		$item.find('.explanation').html(glossaryGroup.get(cid).toJSON().explain);
+		$item.find('.explanation').html(glossaryGroup.at(id).toJSON().explain);
 		$item.find('.explanation').css('display', 'none').css('text-align','center');
-		glossaryGroup.get(cid).set("expanded","false");
+		glossaryGroup.at(id).set("expanded","false");
 	}
 	$item.animate({width: w, height: h}, 100);
 
@@ -206,15 +198,15 @@ function animateToShow($item, cid){
 	});
 }
 
-function animateToHide($item, cid){
+function animateToHide($item, id){
 	var w = 200;
 	var h = 200;
 	if ($item.width() == 430){
 		w = 200;
 		h = 200;
-		$item.find('.explanation').html(glossaryGroup.get(cid).toJSON().explain);
+		$item.find('.explanation').html(glossaryGroup.at(id).toJSON().explain);
 		$item.find('.explanation').css('display', 'none').css('text-align','center');
-		glossaryGroup.get(cid).set("expanded","false");
+		glossaryGroup.at(id).set("expanded","false");
 	}
 	$item.animate({width: w, height: h}, 100);
 

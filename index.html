@@ -91,20 +91,20 @@
         <script id="sliderView" type="text/template">
             <div class="slider">
                 <%
-                function snippets(link){
+                function snippets(link, name){
                     var youtubeSnip;
                     var vimeoSnip;
                     var imageSnip;
 
-                    youtubeSnip = '<iframe width="350" height="145" src="https://www.youtube.com/embed/'+ link.substr(link.indexOf("/watch?v=")+9) + '" frameborder="0" allowfullscreen></iframe>';
+                    youtubeSnip = '<p>'+name+'</p><iframe width="350" height="145" src="https://www.youtube.com/embed/'+ link.substr(link.indexOf("/watch?v=")+9) + '" frameborder="0" allowfullscreen></iframe>';
 
-                    vimeoSnip = '<iframe src="https://player.vimeo.com/video/' + link.substr(link.indexOf(".com/")+5) + '" width="350" height="197" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>';
-                    imageSnip = '<img src="' + link + '" width=350>';
+                    vimeoSnip = '<p>'+name+'</p><iframe src="https://player.vimeo.com/video/' + link.substr(link.indexOf(".com/")+5) + '" width="350" height="197" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>';
+                    imageSnip = '<p>'+name+'</p><img src="' + link + '" width=350>';
 
                     if(link.indexOf("youtube")+1){
-                        return ["youtube", youtubeSnip];
+                        return youtubeSnip;
                     }else if(link.indexOf("vimeo")+1){
-                        return ["vimeo", vimeoSnip];
+                        return vimeoSnip;
                     }else if(link.substr(link.length-3)=="jpg" || link.substr(link.length-3)=="png" || link.substr(link.length-3)=="gif"){
                         return imageSnip;
                     }else{
@@ -128,46 +128,53 @@
                 %>
                 <div><%= intro %></div>
 
-                <div>
                     <% 
                     var sum = application.length;
-                    var str = "";
-                    var panelCount = 1;
+                    var str = "<div>Examples include:<br/>";
+                    var panelCount = 0;
                     var single = true;
 
-                    for(i=0; i<sum; i++){
-                        var content = snippets(application[i].path);
+                    if (application != false){
+                        for(i=0; i<sum; i++){
+                            var content = snippets(application[i].path, application[i].name);
 
-                        if (content == false){
-                            str += "<ul><li><a href='";
-                            str += application[i].path;
-                            str += "' target=_blank>"
-                            str += application[i].name;
-                            str += "</a></li></ul>";
-                            while(single){
+                            if (content == false){
+                                str += "<div class='list'><a href='";
+                                str += application[i].path;
+                                str += "' target=_blank>"
+                                str += application[i].name;
+                                str += "</a></div>";
+                                while(single){
+                                    panelCount++;
+                                    single = false;
+                                }
+                                // print(str);
+                            }else{
+                                str += content + "</div><div>";
                                 panelCount++;
-                                single = false;
                             }
-                            // print(str);
-                        }else{
-                            str = content[1] + "</div><div>";
-                            panelCount++;
                         }
+                    }else{
+                        str="";
                     }
+
                     print(str + "</div>");
                     %>
 
                 <div><ul>
-                    <% 
-                    var sum = workshops.length;
-                    for(i=0; i<sum; i++){
-                        var str = "";
-                        str += "<li><a href='";
-                        str += workshops[i].path;
-                        str += "' target=_blank>"
-                        str += workshops[i].name;
-                        str += "</a></li>";
-                        print(str);
+                    <%
+                    if (workshops != false){
+                        var sum = workshops.length;
+                        for(i=0; i<sum; i++){
+                            var str = "";
+                            str += "<li><a href='";
+                            str += workshops[i].path;
+                            str += "' target=_blank>"
+                            str += workshops[i].name;
+                            str += "</a></li>";
+                            print(str);
+                        }
+                        panelCount++;
                     }
                     %>
                 </ul></div>

@@ -23,11 +23,11 @@ ul{
 	list-style-type: none;
 }
 
-ul li a:link{
+.list a:link{
 	text-decoration: underline;
 }
 
-ul li a:visited{
+.list a:visited{
 	text-decoration: underline;
 }
 
