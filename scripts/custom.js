@@ -1,5 +1,5 @@
 var glossaryGroup = new futures.collection([
-			iHTML, iCSS, iOpenData, iJavascript, iRuby, iGit, iSwift, iIot
+			iHTML, iOpenData, iJavascript, iRuby, iGit, iSwift, iIot
 		]);
 
 var glossaryGroupView = new futures.allView({collection: glossaryGroup});
@@ -66,7 +66,42 @@ $(document).ready(function($) {
 		$(this).animate({width: w, height: h}, 100, function(){
 			$("#wall").masonry({});
 		});
+	});
 
+	$(".explanation").on('click', ".bullet", function(){
+		$(".button").off('click');
+
+		var i = $(this).index();
+		nextPane($(this).parents("#banner").find(".slider"), i);
+		$(this).parent(".bulletNav").find(".bullet").html("&#9675;");
+		$(this).html("&#9679;");
+
+		setTimeout(function(){
+			$(".button").on('click', function(){
+				var id = $(this).index() + 1;
+				var cid = "c"+id;
+
+				var glossaryDetailsView = new futures.sliderView({model:glossaryGroup.get(cid)});
+
+				$(this).find('.explanation').html(glossaryDetailsView.render().$el);
+				$(this).find('.explanation').css('display', 'block').css('text-align','left');
+				glossaryGroup.get(cid).set("expanded","true");
+
+				var w = 430;
+				var h = 430;
+
+				if ($(this).width() == 430){
+					w = 200;
+					h = 200;
+					$(this).find('.explanation').html(glossaryGroup.get(cid).toJSON().explain);
+					$(this).find('.explanation').css('display', 'none').css('text-align','center');
+					glossaryGroup.get(cid).set("expanded","false");
+				}
+				$(this).animate({width: w, height: h}, 100, function(){
+					$("#wall").masonry({});
+				});
+					});
+		},10);
 	});
 
 	$("#beginner").click(function(e) {
@@ -98,6 +133,11 @@ $(document).ready(function($) {
 });
 
 
+function nextPane($item, n){
+	var newPosition = 130 * n;
+	var asPercentage = newPosition + "%";
+	$item.css('right', asPercentage);
+}
 
 // Custom functions
 function showPopup(selectedModel){

@@ -91,7 +91,43 @@
         <script id="sliderView" type="text/template">
             <div class="slider">
                 <div><%= intro %></div>
-                <div><%= application %></div>
+                <div><ul>
+                    <% 
+                    var sum = application.length;
+                    for(i=0; i<sum; i++){
+                        var str = "";
+                        str += "<li><a href='";
+                        str += application[i].path;
+                        str += "' target=_blank>"
+                        str += application[i].name;
+                        str += "</a></li>";
+                        print(str);
+                    }
+                    %>
+                </ul></div>
+                <div><ul>
+                    <% 
+                    var sum = workshops.length;
+                    for(i=0; i<sum; i++){
+                        var str = "";
+                        str += "<li><a href='";
+                        str += workshops[i].path;
+                        str += "' target=_blank>"
+                        str += workshops[i].name;
+                        str += "</a></li>";
+                        print(str);
+                    }
+                    %>
+                </ul></div>
+            </div>
+            <div class="bulletNav">
+                <span class="bullet" id="1">&#9679;</span> 
+                <% 
+                var sum = 2;
+                for (i=0; i<sum; i++){
+                    print('<span class="bullet" id="2">&#9675;</span> ');
+                }
+                %>
             </div>
         </script>
 
