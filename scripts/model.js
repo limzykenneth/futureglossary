@@ -105,7 +105,7 @@ var iFeedback = new futures.glossary({
 	link: "feedback",
 	tier: 1,
 	explain: "Tell us what you think about this glossary!",
-	intro: "",
+	intro: "<p>Please fill out the form available <a href='http://goo.gl/forms/MYEMWefIuw' target=_blank><u>here</u></a> to let us know what you think so that we can further improve this.</p>",
 	application: false,
 	workshops: false
 });
